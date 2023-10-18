@@ -2,16 +2,30 @@ import { useState } from 'react';
 import Dialog from './Dialog';
 
 const DialogDemo = (): React.JSX.Element => {
-  const [display, setDisplay] = useState(false);
+  const [displayDialog, setDisplayDialog] = useState(false);
+  const [displayModal, setDisplayModal] = useState(false);
 
-  const toggleModalHandler = () => {
-    setDisplay(!display);
+  const toggleDialogHandler = () => {
+    setDisplayModal(false);
+    setDisplayDialog(!displayDialog);
+  };
+
+  const openModalHandler = () => {
+    setDisplayModal(true);
   };
 
   return (
     <div>
-      <Dialog display={display}>test</Dialog>
-      <button type="button" onClick={toggleModalHandler}></button>
+      <Dialog isOpen={displayDialog}>Dialog</Dialog>
+      <Dialog isOpen={displayModal} isModal={true}>
+        Dialog modal
+      </Dialog>
+      <button type="button" onClick={toggleDialogHandler}>
+        Toggle dialog
+      </button>
+      <button type="button" onClick={openModalHandler}>
+        Open modal
+      </button>
     </div>
   );
 };
