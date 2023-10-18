@@ -19,8 +19,8 @@ const Dialog = ({
   if (!display) return <></>;
 
   return (
-    <div>
-      <div role="dialog">
+    <div className={modal ? 'dialog backdrop' : 'dialog'}>
+      <div className="dialog" role="dialog">
         <div className="dialog-header">
           <Header />
         </div>
