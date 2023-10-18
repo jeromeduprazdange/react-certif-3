@@ -15,7 +15,7 @@ const Dialog = ({
   header: Header = DefaultHeader,
   footer: Footer = DefaultFooter,
   children,
-}: DialogProps) => {
+}: DialogProps): React.JSX.Element => {
   if (!display) return <></>;
 
   return (
@@ -35,10 +35,10 @@ const Dialog = ({
 
 export default Dialog;
 
-const DefaultHeader = () => {
+const DefaultHeader = (): React.JSX.Element => {
   return <></>;
 };
 
-const DefaultFooter = () => {
+const DefaultFooter = (): React.JSX.Element => {
   return <></>;
 };

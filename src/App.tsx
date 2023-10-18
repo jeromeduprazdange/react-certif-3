@@ -1,7 +1,7 @@
 import './App.css';
 import DialogDemo from './dialog/DialogDemo';
 
-const App = () => {
+const App = (): React.JSX.Element => {
   return (
     <>
       <DialogDemo />

@@ -1,5 +1,5 @@
-const UsePersistedState = () => {
+const UsePersistedStateDemo = (): React.JSX.Element => {
   return <></>;
 };
 
-export default UsePersistedState;
+export default UsePersistedStateDemo;

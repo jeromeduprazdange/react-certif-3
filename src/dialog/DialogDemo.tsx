@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Dialog from './Dialog';
 
-const DialogDemo = () => {
+const DialogDemo = (): React.JSX.Element => {
   const [display, setDisplay] = useState(false);
 
   const toggleModalHandler = () => {
