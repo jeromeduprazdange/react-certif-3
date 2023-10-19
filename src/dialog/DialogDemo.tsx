@@ -27,9 +27,12 @@ const DialogDemo = (): React.JSX.Element => {
   return (
     <section>
       <h1>Dialog Demo</h1>
-      <ImageDialog isOpen={displayDialog} onCloseClick={closeDialogHandler}>
-        image
-      </ImageDialog>
+      <ImageDialog
+        isOpen={displayDialog}
+        title="My beautiful image"
+        imageSrc="src/assets/space.jpg"
+        onCloseClick={closeDialogHandler}
+      />
       <ConfirmModal isOpen={displayModal} onCloseClick={closeModalHandler}>
         question
       </ConfirmModal>

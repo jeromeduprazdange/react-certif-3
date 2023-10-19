@@ -21,14 +21,15 @@ const Dialog = ({
 }: DialogProps): React.JSX.Element | null => {
   if (!isOpen) return null;
 
-  const onCloseClickHandler = () => {
+  const onCloseClickHandler = (): void => {
     if (isModal && onCloseClick) {
       onCloseClick();
     }
   };
 
   const dialogContent: React.JSX.Element = (
-    <div className={isModal ? 'dialog backdrop' : 'dialog'} onClick={onCloseClickHandler}>
+    <>
+      {isModal && <div className="dialog-backdrop" onClick={onCloseClickHandler} />}
       <div className="dialog" role="dialog" aria-modal={isModal}>
         <div className="dialog-header">
           <Header />
@@ -38,7 +39,7 @@ const Dialog = ({
           <Footer />
         </div>
       </div>
-    </div>
+    </>
   );
 
   return ReactDOM.createPortal(dialogContent, document.body);
