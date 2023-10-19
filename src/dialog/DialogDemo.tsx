@@ -1,32 +1,45 @@
 import { useState } from 'react';
 import Dialog from './Dialog';
+import ImageDialog from './ImageDialog/ImageDialog';
+import ConfirmModal from './ConfirmModal/ConfirmModal';
 
 const DialogDemo = (): React.JSX.Element => {
   const [displayDialog, setDisplayDialog] = useState(false);
   const [displayModal, setDisplayModal] = useState(false);
 
-  const toggleDialogHandler = () => {
+  const toggleDialogHandler = (): void => {
     setDisplayModal(false);
     setDisplayDialog(!displayDialog);
   };
 
-  const openModalHandler = () => {
+  const closeDialogHandler = (): void => {
+    setDisplayDialog(false);
+  };
+
+  const openModalHandler = (): void => {
     setDisplayModal(true);
   };
 
+  const closeModalHandler = (): void => {
+    setDisplayModal(false);
+  };
+
   return (
-    <div>
-      <Dialog isOpen={displayDialog}>Dialog</Dialog>
-      <Dialog isOpen={displayModal} isModal={true}>
-        Dialog modal
-      </Dialog>
+    <section>
+      <h1>Dialog Demo</h1>
+      <ImageDialog isOpen={displayDialog} onCloseClick={closeDialogHandler}>
+        image
+      </ImageDialog>
+      <ConfirmModal isOpen={displayModal} onCloseClick={closeModalHandler}>
+        question
+      </ConfirmModal>
       <button type="button" onClick={toggleDialogHandler}>
-        Toggle dialog
+        Toggle image dialog
       </button>
       <button type="button" onClick={openModalHandler}>
-        Open modal
+        Open confirm modal
       </button>
-    </div>
+    </section>
   );
 };
 

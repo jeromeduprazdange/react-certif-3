@@ -1,10 +1,12 @@
-import './App.css';
 import DialogDemo from './dialog/DialogDemo';
+
+import './App.css';
 
 const App = (): React.JSX.Element => {
   return (
     <>
       <DialogDemo />
+      <hr />
     </>
   );
 };
