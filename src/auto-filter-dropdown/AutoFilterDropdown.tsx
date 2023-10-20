@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 
 import './AutoFilterDropdown.css';
 
@@ -22,9 +22,11 @@ const AutoFilterDropdown = <T,>({
   const [inputValue, setInputValue] = useState<string>('');
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
-  const filteredData: T[] = data.filter((item) =>
-    (item[property] as unknown as string).toLowerCase().includes(inputValue.toLowerCase()),
-  );
+  const filteredData: T[] = useMemo(() => {
+    return data.filter((item) =>
+      (item[property] as unknown as string).toLowerCase().includes(inputValue.toLowerCase()),
+    );
+  }, [data, property, inputValue]);
 
   const onInputValueChangeHandler = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setInputValue(event.target.value);
