@@ -6,7 +6,7 @@ type AutoFilterDropdownProps<T> = {
   data: T[];
   property: keyof T;
   placeholder: string;
-  maxDisplayedOptions: number;
+  maxDisplayedOptions?: number;
   valueChange: (selectedItem: T) => void;
 };
 
@@ -23,9 +23,7 @@ const AutoFilterDropdown = <T,>({
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
   const filteredData: T[] = useMemo(() => {
-    return data.filter((item) =>
-      (item[property] as unknown as string).toLowerCase().includes(inputValue.toLowerCase()),
-    );
+    return data.filter((item) => (item[property] as string).toLowerCase().includes(inputValue.toLowerCase()));
   }, [data, property, inputValue]);
 
   const onInputValueChangeHandler = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -34,7 +32,7 @@ const AutoFilterDropdown = <T,>({
 
   const onSelectValueHandler = (item: T): void => {
     valueChange(item);
-    setInputValue(item[property] as unknown as string);
+    setInputValue(item[property] as string);
     setIsFocused(false);
   };
 
