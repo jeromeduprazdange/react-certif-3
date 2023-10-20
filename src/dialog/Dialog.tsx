@@ -31,13 +31,9 @@ const Dialog = ({
     <>
       {isModal && <div className="dialog-backdrop" onClick={onCloseClickHandler} />}
       <div className="dialog" role="dialog" aria-modal={isModal}>
-        <div className="dialog-header">
-          <Header />
-        </div>
+        <Header />
         {children}
-        <div className="dialog-footer">
-          <Footer />
-        </div>
+        <Footer />
       </div>
     </>
   );

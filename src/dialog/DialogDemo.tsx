@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import Dialog from './Dialog';
 import ImageDialog from './ImageDialog/ImageDialog';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
 
+import './DialogDemo.css';
+
 const DialogDemo = (): React.JSX.Element => {
-  const [displayDialog, setDisplayDialog] = useState(false);
-  const [displayModal, setDisplayModal] = useState(false);
+  const [displayDialog, setDisplayDialog] = useState<boolean>(false);
+  const [displayModal, setDisplayModal] = useState<boolean>(false);
+  const [isModalConfirmed, setIsModalConfirmed] = useState<boolean | null>(null);
 
   const toggleDialogHandler = (): void => {
     setDisplayModal(false);
@@ -22,10 +24,21 @@ const DialogDemo = (): React.JSX.Element => {
 
   const closeModalHandler = (): void => {
     setDisplayModal(false);
+    setIsModalConfirmed(null);
+  };
+
+  const confirmModalHandler = (): void => {
+    setDisplayModal(false);
+    setIsModalConfirmed(true);
+  };
+
+  const cancelModalHandler = (): void => {
+    setDisplayModal(false);
+    setIsModalConfirmed(false);
   };
 
   return (
-    <section>
+    <section className="dialog-demo">
       <h1>Dialog Demo</h1>
       <ImageDialog
         isOpen={displayDialog}
@@ -33,8 +46,13 @@ const DialogDemo = (): React.JSX.Element => {
         imageSrc="src/assets/space.jpg"
         onCloseClick={closeDialogHandler}
       />
-      <ConfirmModal isOpen={displayModal} onCloseClick={closeModalHandler}>
-        question
+      <ConfirmModal
+        isOpen={displayModal}
+        onCloseClick={closeModalHandler}
+        onConfirmClick={confirmModalHandler}
+        onCancelClick={cancelModalHandler}
+      >
+        Are you sure you want to do this?
       </ConfirmModal>
       <button type="button" onClick={toggleDialogHandler}>
         Toggle image dialog
@@ -42,6 +60,7 @@ const DialogDemo = (): React.JSX.Element => {
       <button type="button" onClick={openModalHandler}>
         Open confirm modal
       </button>
+      {isModalConfirmed !== null && <p>isModalConfirmed : {isModalConfirmed.toString()}</p>}
     </section>
   );
 };

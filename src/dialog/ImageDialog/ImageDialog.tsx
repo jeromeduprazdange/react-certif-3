@@ -23,7 +23,7 @@ const ImageDialog = ({ isOpen, title, imageSrc, onCloseClick }: ImageDialogProps
 
   return (
     <Dialog isOpen={isOpen} header={header}>
-      <img className="image-dialog--img" src={imageSrc} alt="" />
+      <img className="image-dialog--img" src={imageSrc} alt={title} />
     </Dialog>
   );
 };
