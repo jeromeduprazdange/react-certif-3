@@ -1,4 +1,16 @@
-img {
+.image-dialog--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.image-dialog--close-btn,
+.image-dialog--close-btn:focus {
+  all: unset;
+  cursor: pointer;
+}
+
+.image-dialog--img {
   width: 100%;
   height: auto;
 }

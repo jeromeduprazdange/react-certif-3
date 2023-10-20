@@ -14,13 +14,16 @@ const ImageDialog = ({ isOpen, title, imageSrc, onCloseClick }: ImageDialogProps
     return (
       <div className="image-dialog--header">
         <h2>{title}</h2>
+        <button className="image-dialog--close-btn" onClick={onCloseClick}>
+          &times;
+        </button>
       </div>
     );
   };
 
   return (
-    <Dialog isOpen={isOpen} onCloseClick={onCloseClick} header={header}>
-      <img src={imageSrc} alt="" />
+    <Dialog isOpen={isOpen} header={header}>
+      <img className="image-dialog--img" src={imageSrc} alt="" />
     </Dialog>
   );
 };
