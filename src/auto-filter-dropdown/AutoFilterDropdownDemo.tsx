@@ -30,7 +30,7 @@ const DATA: DataType[] = [
 ];
 
 const AutoFilterDropdownDemo = (): React.JSX.Element => {
-  const handleValueChange = (event: DataType): void => {
+  const onValueChangeHandler = (event: DataType): void => {
     console.log(event);
   };
 
@@ -42,7 +42,7 @@ const AutoFilterDropdownDemo = (): React.JSX.Element => {
           data={DATA}
           placeholder="Please enter something"
           property="name"
-          valueChange={handleValueChange}
+          valueChange={onValueChangeHandler}
         ></AutoFilterDropdown>
       </div>
     </div>

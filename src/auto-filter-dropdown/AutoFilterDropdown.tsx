@@ -1,4 +1,4 @@
-import { FocusEventHandler, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import './AutoFilterDropdown.css';
 
@@ -6,6 +6,7 @@ type AutoFilterDropdownProps<T> = {
   data: T[];
   property: keyof T;
   placeholder: string;
+  maxDisplayedOptions: number;
   valueChange: (selectedItem: T) => void;
 };
 
@@ -13,6 +14,7 @@ const AutoFilterDropdown = <T,>({
   data,
   property,
   placeholder = 'Type to filter...',
+  maxDisplayedOptions = 30,
   valueChange,
 }: AutoFilterDropdownProps<T>): React.JSX.Element => {
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -56,9 +58,9 @@ const AutoFilterDropdown = <T,>({
         value={inputValue}
         onChange={onInputValueChangeHandler}
       />
-      {isFocused && (
+      {isFocused && inputValue && (
         <ul className="auto-filter-dropdown--list">
-          {filteredData.map((item: T, index: number) => {
+          {filteredData.slice(0, maxDisplayedOptions).map((item: T, index: number) => {
             const regex = new RegExp(`(${inputValue})`, 'ig');
             const itemName = (item[property] as unknown as string).replace(
               regex,

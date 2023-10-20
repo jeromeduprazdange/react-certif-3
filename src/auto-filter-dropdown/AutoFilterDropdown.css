@@ -13,6 +13,7 @@
 }
 
 .auto-filter-dropdown--list {
+  position: absolute;
   list-style: none;
   padding: 0.5rem;
   margin: 0;
@@ -21,6 +22,7 @@
   max-height: 200px;
   overflow-y: auto;
   width: 100%;
+  background-color: white;
 }
 
 .auto-filter-dropdown--list-element {
