@@ -1,13 +1,9 @@
 import usePersistedState from './use-persisted-state';
 
 const DisplayStateValue = (): React.JSX.Element => {
-  const [persistedValue] = usePersistedState('myPersistedData', '');
+  const [storedValue] = usePersistedState('sharedData', '');
 
-  return (
-    <div>
-      <h2>Persisted value : {persistedValue}</h2>
-    </div>
-  );
+  return <div>Shared Data: {storedValue}</div>;
 };
 
 export default DisplayStateValue;

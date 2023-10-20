@@ -1,34 +1,39 @@
-import { useState, useEffect, Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useCallback, useEffect, useState } from 'react';
 
-type SetValue<T> = Dispatch<SetStateAction<T>>;
-type StorageKey = string;
+function usePersistedState<T>(key: string, initialValue: T): [T, Dispatch<SetStateAction<T>>] {
+  const readValue = useCallback((): T => {
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : initialValue;
+  }, [initialValue, key]);
 
-const usePersistedState = <T>(key: StorageKey, initialValue: T): [T, SetValue<T>] => {
-  const [storedValue, setStoredValue] = useState<T>(() => {
-    const item = window.localStorage.getItem(key);
-    return item ? (JSON.parse(item) as T) : initialValue;
-  });
+  const [storedValue, setStoredValue] = useState<T>(readValue);
 
-  const setPersistedValue: SetValue<T> = (value) => {
+  const setValue = (value: SetStateAction<T>): void => {
+    localStorage.setItem(key, JSON.stringify(value));
     setStoredValue(value);
-    window.localStorage.setItem(key, JSON.stringify(value));
+    dispatchEvent(new Event('storage'));
   };
 
-  useEffect(() => {
-    const handleStorageChange = (event: StorageEvent): void => {
-      if (event.storageArea === window.localStorage && event.key === key) {
-        setStoredValue(event.newValue ? (JSON.parse(event.newValue) as T) : initialValue);
+  const onStorageChangeHandler = useCallback(
+    (event: StorageEvent) => {
+      if ((event as StorageEvent)?.key && (event as StorageEvent)?.key !== key) {
+        return;
       }
-    };
+      setStoredValue(readValue());
+    },
+    [key, readValue],
+  );
 
-    window.addEventListener('storage', handleStorageChange);
+  useEffect(() => {
+    setStoredValue(readValue());
+    addEventListener('storage', onStorageChangeHandler);
 
     return () => {
-      window.removeEventListener('storage', handleStorageChange);
+      removeEventListener('storage', onStorageChangeHandler);
     };
-  }, [key, initialValue]);
+  }, [readValue, onStorageChangeHandler]);
 
-  return [storedValue, setPersistedValue];
-};
+  return [storedValue, setValue];
+}
 
 export default usePersistedState;

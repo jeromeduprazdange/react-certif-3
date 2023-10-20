@@ -3,14 +3,14 @@ import usePersistedState from './use-persisted-state';
 
 const SetStateValue = (): React.JSX.Element => {
   const [inputValue, setInputValue] = useState('');
-  const [, setPersistedValue] = usePersistedState('myPersistedData', '');
+  const [, setValue] = usePersistedState('sharedData', '');
 
   const onInputChangeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
     setInputValue(event.target.value);
   };
 
   const onButtonClickHandler = (): void => {
-    setPersistedValue(inputValue);
+    setValue(inputValue);
   };
 
   return (
