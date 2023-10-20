@@ -26,9 +26,15 @@ const AutoFilterDropdown = <T,>({
   };
 
   return (
-    <div>
-      <input type="text" placeholder={placeholder} value={inputValue} onChange={handleInputValueChange} />
-      <ul>
+    <div className="auto-filter-dropdown">
+      <input
+        className="auto-filter-dropdown--input"
+        type="text"
+        placeholder={placeholder}
+        value={inputValue}
+        onChange={handleInputValueChange}
+      />
+      <ul className="auto-filter-dropdown--list">
         {filteredData.map((item) => {
           const regex = new RegExp(`(${inputValue})`, 'ig');
           const itemName = (item[property] as unknown as string).replace(
@@ -36,7 +42,12 @@ const AutoFilterDropdown = <T,>({
             (_, group) => `<strong>${group}</strong>`,
           );
           return (
-            <li key={itemName} onClick={(): void => valueChange(item)} dangerouslySetInnerHTML={{ __html: itemName }} />
+            <li
+              className="auto-filter-dropdown--list-element"
+              key={itemName}
+              onClick={(): void => valueChange(item)}
+              dangerouslySetInnerHTML={{ __html: itemName }}
+            />
           );
         })}
       </ul>

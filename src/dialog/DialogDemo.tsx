@@ -39,7 +39,7 @@ const DialogDemo = (): React.JSX.Element => {
 
   return (
     <section className="dialog-demo">
-      <h1>Dialog Demo</h1>
+      <h1>Dialog demo</h1>
       <ImageDialog
         isOpen={displayDialog}
         title="My beautiful image"

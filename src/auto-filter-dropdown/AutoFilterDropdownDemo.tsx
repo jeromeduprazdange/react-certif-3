@@ -9,6 +9,24 @@ const DATA: DataType[] = [
   { name: 'Test1', value: 0 },
   { name: 'Test2', value: 1 },
   { name: 'Test3', value: 2 },
+  { name: 'Test1', value: 0 },
+  { name: 'Test2', value: 1 },
+  { name: 'Test3', value: 2 },
+  { name: 'Test1', value: 0 },
+  { name: 'Test2', value: 1 },
+  { name: 'Test3', value: 2 },
+  { name: 'Test1', value: 0 },
+  { name: 'Test2', value: 1 },
+  { name: 'Test3', value: 2 },
+  { name: 'Test1', value: 0 },
+  { name: 'Test2', value: 1 },
+  { name: 'Test3', value: 2 },
+  { name: 'Test1', value: 0 },
+  { name: 'Test2', value: 1 },
+  { name: 'Test3', value: 2 },
+  { name: 'Test1', value: 0 },
+  { name: 'Test2', value: 1 },
+  { name: 'Test3', value: 2 },
 ];
 
 const AutoFilterDropdownDemo = (): React.JSX.Element => {
@@ -18,13 +36,15 @@ const AutoFilterDropdownDemo = (): React.JSX.Element => {
 
   return (
     <div>
-      <h1>AutoFilterDropdown Demo</h1>
-      <AutoFilterDropdown
-        data={DATA}
-        placeholder="Please enter something"
-        property="name"
-        valueChange={handleValueChange}
-      ></AutoFilterDropdown>
+      <h1>Auto-filter dropdown demo</h1>
+      <div className="auto-filter-dropdown-demo">
+        <AutoFilterDropdown
+          data={DATA}
+          placeholder="Please enter something"
+          property="name"
+          valueChange={handleValueChange}
+        ></AutoFilterDropdown>
+      </div>
     </div>
   );
 };
