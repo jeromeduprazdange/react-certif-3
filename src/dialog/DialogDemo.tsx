@@ -43,7 +43,7 @@ const DialogDemo = (): React.JSX.Element => {
       <ImageDialog
         isOpen={displayDialog}
         title="My beautiful image"
-        imageSrc="src/assets/space.jpg"
+        imageSrc="space.jpg"
         onCloseClick={closeDialogHandler}
       />
       <ConfirmModal
@@ -60,7 +60,7 @@ const DialogDemo = (): React.JSX.Element => {
       <button type="button" onClick={openModalHandler}>
         Open confirm modal
       </button>
-      {isModalConfirmed !== null && <p>isModalConfirmed : {isModalConfirmed.toString()}</p>}
+      <p>Modal action confirmed: {isModalConfirmed === true ? 'Yes' : isModalConfirmed === false ? 'No' : ''}</p>
     </section>
   );
 };

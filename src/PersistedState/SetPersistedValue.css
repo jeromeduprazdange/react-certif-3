@@ -1,3 +1,8 @@
+.set-persisted-value {
+  display: flex;
+  align-items: center;
+}
+
 .set-persisted-value button {
   margin-left: 1rem;
 }

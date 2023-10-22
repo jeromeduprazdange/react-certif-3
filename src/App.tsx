@@ -12,7 +12,6 @@ const App = (): React.JSX.Element => {
       <DialogDemo />
       <hr />
       <AutoFilterDropdownDemo />
-      <hr />
     </div>
   );
 };
