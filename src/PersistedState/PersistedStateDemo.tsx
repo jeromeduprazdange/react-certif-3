@@ -1,12 +1,12 @@
-import DisplayStateValue from './DisplayStateValue';
-import SetStateValue from './SetStateValue';
+import DisplayPersistedValue from './DisplayPersistedValue';
+import SetPersistedValue from './SetPersistedValue';
 
 const PersistedStateDemo = (): React.JSX.Element => {
   return (
     <section className="peristed-state-demo">
       <h1>Persisted state demo</h1>
-      <SetStateValue />
-      <DisplayStateValue />
+      <SetPersistedValue />
+      <DisplayPersistedValue />
     </section>
   );
 };

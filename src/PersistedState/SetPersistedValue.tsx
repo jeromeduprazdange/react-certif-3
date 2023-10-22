@@ -1,24 +1,26 @@
 import { ChangeEvent, useState } from 'react';
 import usePersistedState from './use-persisted-state';
 
-const SetStateValue = (): React.JSX.Element => {
+import './SetPersistedValue.css';
+
+const SetPersistedValue = (): React.JSX.Element => {
   const [inputValue, setInputValue] = useState('');
-  const [, setValue] = usePersistedState('sharedData', '');
+  const [, setSharedData] = usePersistedState('sharedData', '');
 
   const onInputChangeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
     setInputValue(event.target.value);
   };
 
   const onButtonClickHandler = (): void => {
-    setValue(inputValue);
+    setSharedData(inputValue);
   };
 
   return (
-    <div>
+    <div className="set-persisted-value">
       <input type="text" value={inputValue} onChange={onInputChangeHandler} />
       <button onClick={onButtonClickHandler}>Set persisted value</button>
     </div>
   );
 };
 
-export default SetStateValue;
+export default SetPersistedValue;

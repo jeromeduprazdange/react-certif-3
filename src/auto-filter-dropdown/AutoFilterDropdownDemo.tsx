@@ -24,33 +24,35 @@ const AutoFilterDropdownDemo = (): React.JSX.Element => {
   return (
     <section className="auto-filter-dropdown-demo">
       <h1>Auto-filter dropdown demo</h1>
-      <div>
-        <h2>Search a user</h2>
-        {userData ? (
-          <AutoFilterDropdown
-            data={userData}
-            placeholder="Please enter a name"
-            property="name"
-            valueChange={onUserValueChangeHandler}
-          ></AutoFilterDropdown>
-        ) : (
-          <p>No data</p>
-        )}
-        <p>User found: {userFound?.name}</p>
-      </div>
-      <div>
-        <h2>Search a Star Wars planet</h2>
-        {planetData ? (
-          <AutoFilterDropdown
-            data={planetData?.results}
-            placeholder="Please enter a planet name"
-            property="name"
-            valueChange={onPlanetValueChangeHandler}
-          ></AutoFilterDropdown>
-        ) : (
-          <p>No data</p>
-        )}
-        <p>Planet found: {planetFound?.name}</p>
+      <div className="auto-filter-dropdown-demo-fields">
+        <div>
+          <h2>Search a user</h2>
+          {userData ? (
+            <AutoFilterDropdown
+              data={userData}
+              placeholder="Please enter a name"
+              property="name"
+              valueChange={onUserValueChangeHandler}
+            ></AutoFilterDropdown>
+          ) : (
+            <p>No data</p>
+          )}
+          <p>User found: {userFound?.name}</p>
+        </div>
+        <div>
+          <h2>Search a Star Wars planet</h2>
+          {planetData ? (
+            <AutoFilterDropdown
+              data={planetData?.results}
+              placeholder="Please enter a planet name"
+              property="name"
+              valueChange={onPlanetValueChangeHandler}
+            ></AutoFilterDropdown>
+          ) : (
+            <p>No data</p>
+          )}
+          <p>Planet found: {planetFound?.name}</p>
+        </div>
       </div>
     </section>
   );

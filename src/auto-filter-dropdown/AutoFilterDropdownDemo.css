@@ -1,3 +1,8 @@
 .auto-filter-dropdown-demo {
   padding: 0.5rem;
 }
+
+.auto-filter-dropdown-demo-fields {
+  display: flex;
+  justify-content: space-evenly;
+}
