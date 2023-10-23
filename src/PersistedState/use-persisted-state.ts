@@ -16,7 +16,7 @@ function usePersistedState<T>(key: string, initialValue: T): [T, Dispatch<SetSta
 
   useEffect(() => {
     const onStorageChangeHandler = (event: StorageEvent): void => {
-      if ((event as StorageEvent)?.key && (event as StorageEvent)?.key !== key) {
+      if (event?.key && event?.key !== key) {
         return;
       }
       setStoredValue(getValue());
