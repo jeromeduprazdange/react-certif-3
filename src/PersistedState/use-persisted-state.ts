@@ -8,9 +8,11 @@ function usePersistedState<T>(key: string, initialValue: T): [T, Dispatch<SetSta
 
   const [storedValue, setStoredValue] = useState<T>(getValue);
 
-  const setValue = (value: SetStateAction<T>): void => {
-    localStorage.setItem(key, JSON.stringify(value));
-    setStoredValue(value);
+  const setValue = (valueOrFunction: SetStateAction<T>): void => {
+    const newValue = valueOrFunction instanceof Function ? valueOrFunction(storedValue) : valueOrFunction;
+
+    localStorage.setItem(key, JSON.stringify(newValue));
+    setStoredValue(newValue);
     dispatchEvent(new Event('storage'));
   };
 
